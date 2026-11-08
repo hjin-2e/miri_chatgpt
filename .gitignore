@@ -1,0 +1,26 @@
+# Local image output and intermediate files
+output/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# Secret and authentication material
+.env
+.env.*
+!.env.example
+*token*.json
+*credentials*.json
+*cookie*.json
+*.pem
+*.key
+playwright/.auth/
+user_data/
+chrome_profile/
