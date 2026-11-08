@@ -1,0 +1,58 @@
+{
+  "겨울": {
+    "tags": ["겨울", "연말", "시즌", "크리스마스"],
+    "subjects": [
+      {"ko": "눈사람", "en": "snowman", "tags": ["눈", "눈사람"]},
+      {"ko": "크리스마스트리", "en": "christmas_tree", "tags": ["트리", "성탄절"]},
+      {"ko": "눈꽃", "en": "snowflake", "tags": ["눈송이", "결정"]},
+      {"ko": "루돌프", "en": "reindeer", "tags": ["사슴", "산타"]},
+      {"ko": "선물상자", "en": "gift_box", "tags": ["선물", "리본"]},
+      {"ko": "겨울 장갑", "en": "winter_gloves", "tags": ["장갑", "방한"]},
+      {"ko": "핫초코", "en": "hot_chocolate", "tags": ["코코아", "음료", "머그컵"]},
+      {"ko": "종소리 방울", "en": "jingle_bell", "tags": ["방울", "종"]},
+      {"ko": "털모자", "en": "winter_hat", "tags": ["모자", "방한"]},
+      {"ko": "목도리", "en": "scarf", "tags": ["머플러", "방한"]},
+      {"ko": "양말", "en": "stocking", "tags": ["크리스마스 양말", "선물"]},
+      {"ko": "진저브레드 쿠키", "en": "gingerbread", "tags": ["쿠키", "간식"]}
+    ]
+  },
+  "봄": {
+    "tags": ["봄", "새싹", "시즌"],
+    "subjects": [
+      {"ko": "벚꽃", "en": "cherry_blossom", "tags": ["꽃", "벚꽃잎"]},
+      {"ko": "튤립", "en": "tulip", "tags": ["꽃", "화분"]},
+      {"ko": "새싹", "en": "sprout", "tags": ["식물", "성장"]},
+      {"ko": "나비", "en": "butterfly", "tags": ["곤충", "날개"]},
+      {"ko": "꽃바구니", "en": "flower_basket", "tags": ["꽃", "바구니"]},
+      {"ko": "우산", "en": "umbrella", "tags": ["봄비", "비"]},
+      {"ko": "병아리", "en": "chick", "tags": ["동물", "아기"]},
+      {"ko": "도시락", "en": "lunch_box", "tags": ["소풍", "음식"]}
+    ]
+  },
+  "여름": {
+    "tags": ["여름", "휴가", "시즌"],
+    "subjects": [
+      {"ko": "조개", "en": "shell", "tags": ["바다", "해변"]},
+      {"ko": "수박", "en": "watermelon", "tags": ["과일", "음식"]},
+      {"ko": "튜브", "en": "swim_ring", "tags": ["물놀이", "바다"]},
+      {"ko": "아이스크림", "en": "ice_cream", "tags": ["디저트", "간식"]},
+      {"ko": "선글라스", "en": "sunglasses", "tags": ["패션", "휴가"]},
+      {"ko": "파라솔", "en": "beach_umbrella", "tags": ["해변", "바다"]},
+      {"ko": "부채", "en": "fan", "tags": ["더위", "바람"]},
+      {"ko": "불가사리", "en": "starfish", "tags": ["바다", "해변"]}
+    ]
+  },
+  "가을": {
+    "tags": ["가을", "단풍", "시즌"],
+    "subjects": [
+      {"ko": "단풍잎", "en": "maple_leaf", "tags": ["낙엽", "잎"]},
+      {"ko": "은행잎", "en": "ginkgo_leaf", "tags": ["낙엽", "잎"]},
+      {"ko": "도토리", "en": "acorn", "tags": ["열매", "숲"]},
+      {"ko": "호박", "en": "pumpkin", "tags": ["할로윈", "수확"]},
+      {"ko": "감", "en": "persimmon", "tags": ["과일", "열매"]},
+      {"ko": "고구마", "en": "sweet_potato", "tags": ["간식", "음식"]},
+      {"ko": "허수아비", "en": "scarecrow", "tags": ["들판", "추수"]},
+      {"ko": "따뜻한 차", "en": "warm_tea", "tags": ["음료", "찻잔"]}
+    ]
+  }
+}

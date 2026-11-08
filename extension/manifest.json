@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Miri ChatGPT Auto Download (Local)",
+  "version": "0.1.0",
+  "description": "Locally orchestrate ChatGPT image downloads for the user's own project.",
+  "permissions": ["downloads", "storage", "activeTab"],
+  "host_permissions": ["https://chatgpt.com/*", "http://127.0.0.1:8765/*"],
+  "background": {"service_worker":"background.js"},
+  "content_scripts": [{"matches":["https://chatgpt.com/*"],"js":["content.js"],"run_at":"document_idle"}],
+  "action": {"default_popup":"popup.html"}
+}

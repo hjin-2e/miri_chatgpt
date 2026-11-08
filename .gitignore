@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Generated files
+output/
+*.log
+
+# Secrets
+.env
+.env.*
+config.json
+*credentials*.json
+*token*.json
+*cookie*.json
+*.pem
+*.key
+
+# Browser sessions
+chrome_profile/
+user_data/
+playwright/.auth/

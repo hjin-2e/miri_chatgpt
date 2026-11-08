@@ -1,0 +1,2 @@
+async function send(type){const [tab]=await chrome.tabs.query({active:true,currentWindow:true});if(!tab?.url?.startsWith('https://chatgpt.com/')){document.querySelector('#status').textContent='ChatGPT 탭에서 실행하세요';return;}try{await chrome.tabs.sendMessage(tab.id,{type});document.querySelector('#status').textContent=type==='start'?'실행 요청 전달':'중지 요청 전달';}catch(e){document.querySelector('#status').textContent='탭을 새로고침한 후 다시 시도하세요';}}
+document.querySelector('#start').onclick=()=>send('start');document.querySelector('#stop').onclick=()=>send('stop');
