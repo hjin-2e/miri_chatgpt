@@ -13,7 +13,7 @@ def safe_name(s):
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]*\.png',s or '') or '..' in s: raise ValueError('unsafe filename')
     return s
 
-def load():
+def load(limit=None):
     src=ROOT/'input'/'subjects.csv'
     if not src.exists(): raise SystemExit(f'CSV 없음: {src}')
     with src.open(encoding='utf-8-sig',newline='') as f: rows=list(csv.DictReader(f))
@@ -33,6 +33,7 @@ def load():
                 'Single subject centered, fully visible, clean smooth edges, transparent PNG with true alpha. '
                 'No floor, no cast shadow, no background, no text, no logo, no collage.')
         STATE['items'].append({'filename':name,'prompt':prompt,'subject':subject,'status':'pending'})
+        if limit is not None and len(STATE['items']) >= limit: break
 
 class Handler(BaseHTTPRequestHandler):
     def log_message(self,*args): pass
@@ -95,8 +96,9 @@ def watch(download_dir, preflight):
         time.sleep(1)
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--downloads',type=Path,default=Path.home()/'Downloads');ap.add_argument('--port',type=int,default=8765);ap.add_argument('--preflight',action='store_true');args=ap.parse_args()
-    load();threading.Thread(target=watch,args=(args.downloads.expanduser(),args.preflight),daemon=True).start()
+    ap=argparse.ArgumentParser();ap.add_argument('--downloads',type=Path,default=Path.home()/'Downloads');ap.add_argument('--port',type=int,default=8765);ap.add_argument('--preflight',action='store_true');ap.add_argument('--limit',type=int,default=1,help='최대 처리 개수 (기본 1개, 전체는 0)');args=ap.parse_args()
+    if args.limit < 0: ap.error('--limit은 0 이상이어야 합니다')
+    load(limit=args.limit or None);threading.Thread(target=watch,args=(args.downloads.expanduser(),args.preflight),daemon=True).start()
     server=ThreadingHTTPServer(('127.0.0.1',args.port),Handler)
     print(f'로컬 서버: http://127.0.0.1:{args.port} / 대기 {len(STATE["items"])}개',flush=True)
     print('Chrome 확장 프로그램을 켜고 ChatGPT 탭을 열어 두세요.',flush=True)
