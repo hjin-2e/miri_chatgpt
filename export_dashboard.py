@@ -5,6 +5,7 @@ Reads existing input/subjects.csv without modifying it. No email or credentials
 are exported. Missing PNGs are reported as planned (not upload-ready).
 """
 import argparse
+import csv
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -29,6 +30,11 @@ STATUS_LABELS = {
 }
 def export(destination: Path):
     rows, _ = read_rows()
+    report = ROOT / "output" / "review" / "png_quality_report.csv"
+    checks = {}
+    if report.is_file():
+        with report.open(newline="", encoding="utf-8-sig") as f:
+            checks = {norm(r.get("filename")): r.get("status") for r in csv.DictReader(f)}
     items = []
     for row in rows:
         filename = norm(row.get("filename"))
@@ -39,8 +45,18 @@ def export(destination: Path):
         # "ready" requires explicit local PNG preflight confirmation; never
         # infer ready merely from a generated/submitted status.
         display_status = STATUS_LABELS.get(status, "review")
-        if status == "pending" and image_exists:
-            display_status = "review"
+        image_path = ROOT / "output" / "images" / filename
+        if status not in ("approved", "rejected"):
+            check = checks.get(filename)
+            fresh = report.is_file() and image_exists and report.stat().st_mtime >= image_path.stat().st_mtime
+            if fresh and check == "READY":
+                display_status = "ready"
+            elif check in ("REVIEW", "ERROR") and fresh:
+                display_status = "review"
+            elif image_exists:
+                display_status = "review"
+            elif status == "pending":
+                display_status = "planned"
         updated = norm(row.get("reviewed_at")) or norm(row.get("submitted_at"))
         items.append({
             "elementName": norm(row.get("element_name")) or norm(row.get("subject")),
@@ -60,7 +76,8 @@ def export(destination: Path):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--output", type=Path, default=ROOT / "output" / "dashboard_status.json")
+    p.add_argument("--portfolio", type=Path, help="Local hjin-Portfolio repository root; writes public/miri/data/status.json")
     args = p.parse_args()
-    export(args.output)
+    export(args.portfolio / "public/miri/data/status.json" if args.portfolio else args.output)
 if __name__ == "__main__":
     main()
