@@ -13,7 +13,9 @@ function submit(prompt){
  // execCommand inserts through the editable DOM and triggers app input handlers on many React versions.
  if(!document.execCommand('insertText',false,prompt))throw Error('text insertion blocked');
  el.dispatchEvent(new InputEvent('input',{bubbles:true,inputType:'insertText',data:prompt}));
- const btn=sendButton();if(!btn||btn.disabled)throw Error('send button not ready');btn.click();
+ const btn=sendButton();if(btn&&!btn.disabled){btn.click();return;}
+ // Composer state may update after React processes input; caller will retry send explicitly.
+ throw Error('send button not ready; check composer and image generation mode');
 }
 function isDownload(b){const s=[b.getAttribute('aria-label'),b.getAttribute('title'),b.getAttribute('data-testid'),b.textContent].filter(Boolean).join(' ').toLowerCase();return /download|다운로드|저장/.test(s);}
 async function extractImageUrl(img){
@@ -64,4 +66,6 @@ async function tick(){
  }finally{busy=false;if(enabled)setTimeout(tick,1500);}
 }
 chrome.runtime.onMessage.addListener((m,s,r)=>{if(m.type==='start'){enabled=true;tick();r({ok:true});}else if(m.type==='stop'){enabled=false;r({ok:true});}});
+// Auto-run only after the user explicitly enables it once in the extension popup.
+chrome.storage.local.get({autoEnabled:false},cfg=>{if(cfg.autoEnabled){enabled=true;tick();}});
 })();
