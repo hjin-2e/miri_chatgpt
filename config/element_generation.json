@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "platform": "Miricanvas DesignHub",
+  "daily_count": 10,
+  "subject_scope": "all",
+  "subject_categories": [
+    "fruit",
+    "food",
+    "flowers",
+    "plants",
+    "animals",
+    "household",
+    "stationery",
+    "hobbies",
+    "nature",
+    "events",
+    "seasonal"
+  ],
+  "styles": [
+    {
+      "name": "Soft Watercolor",
+      "daily_target": 4
+    },
+    {
+      "name": "Soft Oil Pastel",
+      "daily_target": 3
+    },
+    {
+      "name": "Wax Crayon",
+      "daily_target": 3
+    }
+  ],
+  "seasons": [
+    "spring",
+    "summer",
+    "autumn",
+    "winter",
+    "all-season"
+  ],
+  "compositions": [
+    "single",
+    "half",
+    "sliced",
+    "fan",
+    "overlapping",
+    "bundle",
+    "front",
+    "three-quarter",
+    "diagonal",
+    "circular"
+  ],
+  "metadata": {
+    "language": "ko",
+    "keywords_per_element": 25,
+    "title_pattern": "계절/느낌 + 소재 + 형태 + 일러스트",
+    "filename": "lowercase_snake_case.png",
+    "keyword_groups": {
+      "subject": 10,
+      "shape": 5,
+      "style_and_file": 5,
+      "season_and_use": 5
+    },
+    "require_relevance": true
+  },
+  "image": {
+    "format": "PNG",
+    "true_alpha": true,
+    "padding_percent_min": 2,
+    "padding_percent_max": 3,
+    "one_isolated_element": true,
+    "forbid": [
+      "background",
+      "floor",
+      "cast shadow",
+      "text",
+      "logo",
+      "watermark",
+      "collage"
+    ]
+  },
+  "execution_note": "Planning metadata only; image generation, local file saving, preflight, and uploading require separately verified execution."
+}
