@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "platform": "Miricanvas DesignHub",
   "daily_count": 10,
   "subject_scope": "all",
@@ -57,10 +57,18 @@
     "keyword_groups": {
       "subject": 10,
       "shape": 5,
-      "style_and_file": 5,
-      "season_and_use": 5
+      "season_and_use": 5,
+      "style_and_texture": 5
     },
-    "require_relevance": true
+    "require_relevance": true,
+    "forbidden_keywords": [
+      "PNG",
+      "피엔지",
+      "투명배경",
+      "투명 배경"
+    ],
+    "normalize_forbidden_keywords": true,
+    "unique_keywords": true
   },
   "image": {
     "format": "PNG",
@@ -78,5 +86,105 @@
       "collage"
     ]
   },
-  "execution_note": "Planning metadata only; image generation, local file saving, preflight, and uploading require separately verified execution."
+  "execution_note": "Planning metadata only; image generation, local file saving, preflight, and uploading require separately verified execution.",
+  "season_policy": {
+    "timezone": "Asia/Seoul",
+    "basis": "production_date",
+    "current_season_target": 5,
+    "upcoming_season_or_event_target": 3,
+    "all_season_target": 2,
+    "season_months": {
+      "spring": [
+        3,
+        4,
+        5
+      ],
+      "summer": [
+        6,
+        7,
+        8
+      ],
+      "autumn": [
+        9,
+        10,
+        11
+      ],
+      "winter": [
+        12,
+        1,
+        2
+      ]
+    },
+    "event_lead_days": {
+      "min": 14,
+      "max": 60
+    },
+    "verify_variable_holidays": true,
+    "avoid_irrelevant_season_keywords": true,
+    "monthly_themes": {
+      "1": [
+        "새해",
+        "설날",
+        "겨울",
+        "졸업"
+      ],
+      "2": [
+        "발렌타인데이",
+        "졸업",
+        "입학",
+        "봄"
+      ],
+      "3": [
+        "봄꽃",
+        "새학기",
+        "벚꽃"
+      ],
+      "4": [
+        "피크닉",
+        "어린이날",
+        "어버이날"
+      ],
+      "5": [
+        "가정의 달",
+        "웨딩",
+        "초여름"
+      ],
+      "6": [
+        "여름",
+        "장마",
+        "바다"
+      ],
+      "7": [
+        "물놀이",
+        "여름휴가"
+      ],
+      "8": [
+        "늦여름",
+        "가을",
+        "추석"
+      ],
+      "9": [
+        "가을",
+        "추석",
+        "가을축제"
+      ],
+      "10": [
+        "단풍",
+        "할로윈",
+        "겨울 준비"
+      ],
+      "11": [
+        "겨울",
+        "크리스마스",
+        "연말",
+        "신년"
+      ],
+      "12": [
+        "크리스마스",
+        "송년회",
+        "새해",
+        "설날"
+      ]
+    }
+  }
 }
